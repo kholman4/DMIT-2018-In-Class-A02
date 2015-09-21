@@ -14,6 +14,7 @@ select new
 {
 	BillID = order.BillID,
 	TableID = order.TableID,
+	ReservationID = order.Reservation.ReservationID,
 	BillItems = from item in order.BillItems
 				select new 
 				{
