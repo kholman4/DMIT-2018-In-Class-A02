@@ -21,5 +21,5 @@ group food by food.MenuCategoryID into result
 
 select result
 
-//Lists all the menu items that are listed as entrees and berverages in order from most to least expensive while grouping
+//Lists all the menu items that are listed as entrees and beverages in order from most to least expensive while grouping
 //by menu item category id

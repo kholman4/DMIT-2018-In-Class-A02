@@ -16,7 +16,7 @@ select new
 	BillItems = from item in order.BillItems
 				select new 
 				{
-					ItemName = item.ItemID,
+					ItemName = item.Item.Description,
 					Quantity = item.Quantity,
 					SalePrice = item.SalePrice,
 					Total = item.Quantity * item.SalePrice
