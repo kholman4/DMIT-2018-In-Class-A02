@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{2FC7C2F6-D1CB-46A2-A59A-BB34A3D0B790}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{68cf15d1-61d2-48ba-ada8-0f90f65352d2}|eRestaurant.Framework.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54426"
 		Debug.AspNetCompiler.PhysicalPath = "website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54426\"
@@ -25,13 +26,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{2FC
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestaurant.Framework", "eRestaurant.Framework\eRestaurant.Framework.csproj", "{68CF15D1-61D2-48BA-ADA8-0F90F65352D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2FC7C2F6-D1CB-46A2-A59A-BB34A3D0B790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FC7C2F6-D1CB-46A2-A59A-BB34A3D0B790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC7C2F6-D1CB-46A2-A59A-BB34A3D0B790}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC7C2F6-D1CB-46A2-A59A-BB34A3D0B790}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{68CF15D1-61D2-48BA-ADA8-0F90F65352D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68CF15D1-61D2-48BA-ADA8-0F90F65352D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68CF15D1-61D2-48BA-ADA8-0F90F65352D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68CF15D1-61D2-48BA-ADA8-0F90F65352D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
