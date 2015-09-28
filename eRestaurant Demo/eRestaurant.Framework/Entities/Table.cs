@@ -11,12 +11,20 @@ namespace eRestaurant.Framework.Entities
     {
         [Key]
         public int TableID { get; set; }
-        public byte TableNumber { get; set; }
+        [Required, Range(1,25)]
+            public byte TableNumber { get; set; }
         public bool Smoking { get; set; }
-        public int Capacity { get; set; }
+        [Range(2,8)]
+            public int Capacity { get; set; }
         public bool Available { get; set; }
 
         //Nav Prop
         public virtual ICollection<Reservation> Reservations { get; set; }
+
+        //Sets default to Available
+        public Table() 
+        {
+            Available = true;
+        }
     }
 }
