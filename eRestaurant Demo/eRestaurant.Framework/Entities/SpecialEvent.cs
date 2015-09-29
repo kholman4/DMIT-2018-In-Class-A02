@@ -15,7 +15,6 @@ namespace eRestaurant.Framework.Entities
             public string EventCode { get; set; }
         [Required()][StringLength(30, MinimumLength=5)]//The number first is the maximum length
             public string Description { get; set; }
-
         public bool Active { get; set; }
 
         //Nav Prop
