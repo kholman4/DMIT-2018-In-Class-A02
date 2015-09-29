@@ -16,13 +16,17 @@ namespace eRestaurant.Framework.DAL
             : base("DefaultConnection") { }
         
         //One property for each Table/Entity in the database
+
         public DbSet<MenuCategory> MenuCategories {get; set;}
         public DbSet<Item> Items { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<BillItem> BillItems { get; set; }
         //the property name must match the name of the database table
         public DbSet<Table> Tables { get; set; } //<-- that is the property name ("Tables")
+        public DbSet<Waiter> Waiters { get; set; }
         public DbSet<SpecialEvent> SpecialEvents { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<BillItem> BillItems { get; set; }
+        
 
 
         //For customizing the model of our entities as we want them to match our database, we would put any details inside 

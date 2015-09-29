@@ -9,6 +9,8 @@ namespace eRestaurant.Framework.Entities
 {
     public class BillItem
     {
+
+        //The database table that this will map to has a composite primary key
         [Key, Column(Order = 1)]
             public int BillID { get; set; }
         [Key, Column(Order = 2)]
