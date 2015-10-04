@@ -49,6 +49,80 @@
                     <asp:Label ID="DescriptionData" runat="server" Text='<%# Eval("Description") %>' />
                 </div>
             </ItemTemplate>
+
+            <InsertItemTemplate>
+                <span style="">
+                    <asp:LinkButton runat="server" CommandName="Insert" ID="InsertButton">
+                        Update
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </asp:LinkButton>
+
+                    &nbsp;&nbsp;&nbsp;
+
+                    <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton">
+                        Cancel
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </asp:LinkButton>
+
+                    &nbsp;&nbsp;&nbsp;
+
+                    <asp:CheckBox Checked='<%# Bind("Active") %>' runat="server" ID="ActiveCheckBox" Text="Active" />
+
+                    &mdash;
+
+                    <asp:Label ID="Label3" runat="server" AssociatedControlID="EventCodeTextBox" CssClass="control-label">
+                        Event Code
+                    </asp:Label>
+
+                    <asp:TextBox Text='<%# Bind("EventCode") %>' runat="server" ID="EventCodeTextBox" />
+                    &mdash;
+
+                    <asp:Label ID="Label4" runat="server" AssociatedControlID="DescriptionTextBox"  CssClass="control-label">
+                        Description
+                    </asp:Label>
+
+                    <asp:TextBox Text='<%# Bind("Description") %>' runat="server" ID="DescriptionTextBox" />
+                </span>
+            </InsertItemTemplate>
+
+            <EditItemTemplate>
+                <span style="">
+                    <asp:LinkButton runat="server" CommandName="Update" ID="UpdateButton">
+                        Update
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </asp:LinkButton>
+
+                    &nbsp;&nbsp;
+
+                    <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton">
+                        Cancel
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </asp:LinkButton>
+
+                    &nbsp;&nbsp;&nbsp;
+
+                    <asp:CheckBox Checked='<%# Bind("Active") %>' runat="server" ID="ActiveCheckBox" Text="Active" />
+                    &mdash;
+
+                    <asp:Label ID="Label5" runat="server" AssociatedControlID="EventCodeTextBox" CssClass="control-label">
+                        Event Code
+                    </asp:Label>
+
+                    <asp:TextBox Text='<%# Bind("EventCode") %>' runat="server" ID="EventCodeTextBox" />
+                    &mdash;
+
+                    <asp:Label ID="Label6" runat="server" AssociatedControlID="DescriptionTextBox" CssClass="control-label">
+                        Description
+                    </asp:Label>
+
+                    <asp:TextBox Text='<%# Bind("Description") %>' runat="server" ID="DescriptionTextBox" />
+                </span>
+            </EditItemTemplate>
+
+            <EmptyDataTemplate>
+                <span>No data was returned.</span>
+            </EmptyDataTemplate>
+
         </asp:ListView>
     </div>
     
