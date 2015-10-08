@@ -14,10 +14,12 @@
             OldValuesParameterFormatString="original_{0}" 
             UpdateMethod="UpdateSpecialEvent"
             DeleteMethod="DeleteSpecialEvent"
-            InsertMethod="InsertSpecialEvent">
+            InsertMethod="InsertSpecialEvent" OnDeleted="ProcessExceptions" OnInserted="ProcessExceptions" OnUpdated="ProcessExceptions">
         </asp:ObjectDataSource>
         <%--<asp:GridView ID="SpecialEventsGridView" runat="server" DataSourceID="SpecialEventsDataSource"></asp:GridView>--%>
         <%--CTRL+K,CTRL+C = comment    CTRL+K, CTRL+U = uncomment--%>
+
+        <asp:Label ID="MessageLabel" runat="server" />
 
         <asp:ListView ID="SpecialEventsListView" runat="server" 
             DataSourceID="SpecialEventsDataSource" 
