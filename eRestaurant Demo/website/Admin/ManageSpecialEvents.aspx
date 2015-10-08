@@ -5,16 +5,25 @@
         <h1>Manage Special Events
             <span class="glyphicon glyphicon-glass"></span>
         </h1>
+
         <!--ObjectDataSource control to do the underlying communication with the BLL and my ListView controls -->
         <asp:ObjectDataSource ID="SpecialEventsDataSource" runat="server"
             TypeName="eRestaurant.Framework.BLL.RestaurantAdminController"
             SelectMethod="ListAllSpecialEvents"
-            DataObjectTypeName="eRestaurant.Framework.Entities.SpecialEvent">
+            DataObjectTypeName="eRestaurant.Framework.Entities.SpecialEvent" 
+            OldValuesParameterFormatString="original_{0}" 
+            UpdateMethod="UpdateSpecialEvent"
+            DeleteMethod="DeleteSpecialEvent"
+            InsertMethod="InsertSpecialEvent">
         </asp:ObjectDataSource>
         <%--<asp:GridView ID="SpecialEventsGridView" runat="server" DataSourceID="SpecialEventsDataSource"></asp:GridView>--%>
         <%--CTRL+K,CTRL+C = comment    CTRL+K, CTRL+U = uncomment--%>
 
-        <asp:ListView ID="SpecialEventsListView" runat="server" DataSourceID="SpecialEventsDataSource">
+        <asp:ListView ID="SpecialEventsListView" runat="server" 
+            DataSourceID="SpecialEventsDataSource" 
+            DataKeyNames="EventCode"
+            InsertItemPosition="LastItem">
+
             <LayoutTemplate>
                 <fieldset runat="server" id="itemPlaceholderContainer">
                     <div runat="server" id="itemPlaceholder" />
@@ -86,37 +95,29 @@
             </InsertItemTemplate>
 
             <EditItemTemplate>
-                <span style="">
-                    <asp:LinkButton runat="server" CommandName="Update" ID="UpdateButton">
-                        Update
-                        <span class="glyphicon glyphicon-ok"></span>
+                <div>
+                    <asp:LinkButton runat="server" CommandName="Update" ID="UpdateButton" Text="Update">
                     </asp:LinkButton>
 
                     &nbsp;&nbsp;
 
-                    <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton">
-                        Cancel
-                        <span class="glyphicon glyphicon-remove"></span>
+                    <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton" Text="Cancel">
                     </asp:LinkButton>
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <asp:CheckBox Checked='<%# Bind("Active") %>' runat="server" ID="ActiveCheckBox" Text="Active" />
-                    &mdash;
+                    Event Code:
+                    <asp:TextBox runat="server" ID="EventCodeTextBox" 
+                        Text='<%# Bind("EventCode") %>' 
+                        Enabled="false" />
 
-                    <asp:Label ID="Label5" runat="server" AssociatedControlID="EventCodeTextBox" CssClass="control-label">
-                        Event Code
-                    </asp:Label>
+                    Description:
+                    <asp:TextBox runat="server" ID="DescriptionTextBox"
+                        Text='<%# Bind("Description") %>' />
+                    <asp:CheckBox runat="server" ID="ActiveCheckbox"
+                        Checked='<%# Bind("Active") %>' />
 
-                    <asp:TextBox Text='<%# Bind("EventCode") %>' runat="server" ID="EventCodeTextBox" />
-                    &mdash;
-
-                    <asp:Label ID="Label6" runat="server" AssociatedControlID="DescriptionTextBox" CssClass="control-label">
-                        Description
-                    </asp:Label>
-
-                    <asp:TextBox Text='<%# Bind("Description") %>' runat="server" ID="DescriptionTextBox" />
-                </span>
+                </div>
             </EditItemTemplate>
 
             <EmptyDataTemplate>

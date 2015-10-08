@@ -26,5 +26,56 @@ namespace eRestaurant.Framework.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void UpdateSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                //First attach the item to the dbContext collection
+                var attached = context.SpecialEvents.Attach(item);
+
+                //Second, get the entry for the existing data that should match for this specific special event
+                var existing = context.Entry<SpecialEvent>(attached);
+
+                //Third, mark that the object's values have changed
+                existing.State = System.Data.Entity.EntityState.Modified;
+
+                //Lastly, save the changes in the database
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void DeleteSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                //First give a reference to the actual item in the DB
+                //Find() is a method to look up an item by its primary key
+                var existing = context.SpecialEvents.Find(item.EventCode);
+
+                //Second, remove the item from the DB context
+                context.SpecialEvents.Remove(existing);
+
+                //Lastly, save the changes to the database
+                context.SaveChanges();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void InsertSpecialEvent(SpecialEvent item)
+        {
+            using (RestaurantContext context = new RestaurantContext())
+            {
+                //Add the item to the DBcontext
+                var added = context.SpecialEvents.Add(item);
+
+                //PS we arent really going to do anything with the variable 'added', I just want you to be aware that the Add() method will return the newly added object. (This can be useful in other situations, which we will see later)
+
+                //Save the changes to the database
+                context.SaveChanges();
+            }
+        }
+
     }
 }
