@@ -22,7 +22,7 @@
         <asp:Label ID="MessageLabel" runat="server" />
 
         <asp:ListView ID="WaitersListView" runat="server" 
-            DataSourceID="WaiterssDataSource" 
+            DataSourceID="WaitersDataSource" 
             DataKeyNames="WaiterID"
             InsertItemPosition="LastItem">
 

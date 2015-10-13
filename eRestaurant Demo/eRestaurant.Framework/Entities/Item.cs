@@ -14,9 +14,9 @@ namespace eRestaurant.Framework.Entities
         [Required, StringLength(100,MinimumLength=5)]
             public string Description { get; set; }
         [Range(0.01, 50.00)]
-            public double CurrentPrice { get; set; }
+            public decimal CurrentPrice { get; set; }
         [Range(0.01, 50.00)]
-            public double CurrentCost { get; set; }
+            public decimal CurrentCost { get; set; }
         public bool Active { get; set; }
         [Range(0,5000)]
             public int? Calories { get; set; }
