@@ -50,7 +50,7 @@ namespace eRestaurant.Framework.BLL
                                                     { //Booking() //Create a Booking POCO class
                                                         Name = booking.CustomerName,
                                                         NumberInParty = booking.NumberInParty,
-                                                        Time =          booking.ReservationDate.TimeOfDay,
+                                                        Time =  booking.ReservationDate.TimeOfDay,
                                                         Phone = booking.ContactPhone,
                                                         Event = booking.SpecialEvent.Description
                                                     }
