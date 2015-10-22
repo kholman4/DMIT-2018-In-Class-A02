@@ -30,7 +30,7 @@ select new { //DailyReservation() //Create a DTO class called DailyReservation
 						Time = booking.ReservationDate.TimeOfDay,
 						Phone = booking.ContactPhone, 
 						Event = booking.SpecialEvents == null 
-								?(string)null : booking.SpecialEvents.Description //if the string is null, then put "null" as the description
+								?(string)null : booking.SpecialEvents.Description //if the string is null, then put "null" as the description, otherwise just take the actual description
 					}
 };
 result.Dump();

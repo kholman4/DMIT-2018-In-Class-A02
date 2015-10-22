@@ -34,6 +34,8 @@
                 <ItemTemplate>
                     Month: <%# Item.Month %>
                     Day: <%# Item.Day %>
+
+                    TODO: display the Item.Reservatins in a grid view
                 </ItemTemplate>
                 <SeparatorTemplate><hr /></SeparatorTemplate>
             </asp:Repeater>

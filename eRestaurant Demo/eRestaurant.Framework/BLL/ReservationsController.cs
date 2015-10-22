@@ -35,24 +35,26 @@ namespace eRestaurant.Framework.BLL
         {
             using (var context = new RestaurantContext())
             {
+                //Step 1 will be an object that generates SQL to run on the database
                 var step1 = from eachRow in context.Reservations
                              where eachRow.ReservationStatus == "B"
-                             //TBA - && eachRow has the correct event code  (&& eachRow.EventCode == 'S')
                              orderby eachRow.ReservationDate
-                             group eachRow by new { eachRow.ReservationDate.Month,     eachRow.ReservationDate.Day }; //start the code from beginning up until this point will give you all the details of the reservations
-                             var result = from dailyReservation in step1.ToList()
+                             group eachRow by new { eachRow.ReservationDate.Month,     eachRow.ReservationDate.Day }; 
+
+                             //By calling step1.ToList(), the results are brought into RAM (memory) for us to query as LINQ-To-Objects
+                             var result = from dailyReservation in step1.ToList() 
                              select new DailyReservation()   
                                  {   
                                      Month = dailyReservation.Key.Month,
                                      Day = dailyReservation.Key.Day,
                                      Reservations = from booking in dailyReservation
                                                     select new Booking()
-                                                    { //Booking() //Create a Booking POCO class
+                                                    { 
                                                         Name = booking.CustomerName,
                                                         NumberInParty = booking.NumberInParty,
                                                         Time =  booking.ReservationDate.TimeOfDay,
                                                         Phone = booking.ContactPhone,
-                                                        Event = booking.SpecialEvent == null ? (string)null : booking.SpecialEvent.Description
+                                                        Event = booking.SpecialEvent == null ? (string)null : booking.SpecialEvent.Description //we are doing it in memory
                                                     }
                                  };
                 return result.ToList();
