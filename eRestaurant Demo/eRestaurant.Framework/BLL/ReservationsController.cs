@@ -35,14 +35,14 @@ namespace eRestaurant.Framework.BLL
         {
             using (var context = new RestaurantContext())
             {
-                var result = from eachRow in context.Reservations
+                var step1 = from eachRow in context.Reservations
                              where eachRow.ReservationStatus == "B"
                              //TBA - && eachRow has the correct event code  (&& eachRow.EventCode == 'S')
                              orderby eachRow.ReservationDate
-                             group eachRow by new { eachRow.ReservationDate.Month,     eachRow.ReservationDate.Day } //start the code from beginning up until this point will give you all the details of the reservations
-                             into dailyReservation
+                             group eachRow by new { eachRow.ReservationDate.Month,     eachRow.ReservationDate.Day }; //start the code from beginning up until this point will give you all the details of the reservations
+                             var result = from dailyReservation in step1.ToList()
                              select new DailyReservation()   
-                                 { //DailyReservation() //Create a DTO class called DailyReservation    
+                                 {   
                                      Month = dailyReservation.Key.Month,
                                      Day = dailyReservation.Key.Day,
                                      Reservations = from booking in dailyReservation
@@ -52,7 +52,7 @@ namespace eRestaurant.Framework.BLL
                                                         NumberInParty = booking.NumberInParty,
                                                         Time =  booking.ReservationDate.TimeOfDay,
                                                         Phone = booking.ContactPhone,
-                                                        Event = booking.SpecialEvent.Description
+                                                        Event = booking.SpecialEvent == null ? (string)null : booking.SpecialEvent.Description
                                                     }
                                  };
                 return result.ToList();
