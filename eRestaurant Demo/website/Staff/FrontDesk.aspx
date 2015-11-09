@@ -40,11 +40,13 @@
         
         &nbsp;&nbsp;
         
-<%--        <details style="display:inline-block; vertical-align: top;">
+        <%--<details style="display:inline-block; vertical-align: top;">
             <summary class="badge">About ClockPicker &hellip;</summary>
             <h4>Fancy Bootstrap <a href="http://weareoutman.github.io/clockpicker/">ClockPicker</a></h4>
             <p>The time uses the ClockPicker Bootstrap extension</p>
         </details>--%>
+
+
     </div>        
 </asp:Content>
 
