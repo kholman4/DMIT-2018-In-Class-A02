@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ManageSpecialEvents.aspx.cs" Inherits="Admin_ManageSpecialEvents" %>
 
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="my" TagName="MessageUserControl" %>
+
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="row col-md-12">
         <h1>Manage Special Events
@@ -19,7 +24,9 @@
         <%--<asp:GridView ID="SpecialEventsGridView" runat="server" DataSourceID="SpecialEventsDataSource"></asp:GridView>--%>
         <%--CTRL+K,CTRL+C = comment    CTRL+K, CTRL+U = uncomment--%>
 
-        <asp:Label ID="MessageLabel" runat="server" />
+        <%--<asp:Label ID="MessageLabel" runat="server" />--%>
+
+        <my:MessageUserControl runat="server" ID="MessageUserControl" />
 
         <asp:ListView ID="SpecialEventsListView" runat="server" 
             DataSourceID="SpecialEventsDataSource" 
