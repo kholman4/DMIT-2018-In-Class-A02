@@ -58,23 +58,27 @@
 
             <asp:Repeater ID="ReservationRepeater" runat="server" DataSourceID="ReservationDataSource" ItemType="eRestaurant.Framework.Entities.DTO.ReservationCollection">
                 <ItemTemplate>
-                    <h4><%# Item.Hour %></h4>
-                    <%# Item.Reservations.Count %>
-                    <asp:ListView ID="ReservationSummaryListView" runat="server" ItemType="eRestaurant.Framework.Entities.DTO.ReservationSummary" DateSource="<%# Item.Reservations %>">
-                        <LayoutTemplate>
-                            <div class="seating">
-                                <span runat="server" id="itemPlaceholder" />
-                            </div>
-                        </LayoutTemplate>
-                        <ItemTemplate>
-                            <div>
-                                <%# Item.Name %>
-                                <%# Item.NumberInParty %>
-                                <%# Item.Status %>
-                                PH: <%# Item.Contact %>
-                            </div>
-                        </ItemTemplate>
-                    </asp:ListView>
+                    <div>
+                        <h4><%# Item.Hour %></h4>
+                        <asp:ListView ID="ReservationSummaryListView" runat="server"
+                                ItemType="eRestaurant.Framework.Entities.DTO.ReservationSummary"
+                                DataSource="<%# Item.Reservations %>">
+                            <LayoutTemplate>
+                                <div class="seating">
+                                    <span runat="server" id="itemPlaceholder" />
+                                </div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <div>
+                                    <%# Item.Name %> —
+                                    <%# Item.NumberInParty %> —
+                                    <%# Item.Status %> —
+                                    PH:
+                                    <%# Item.Contact %>
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
                 </ItemTemplate>
             </asp:Repeater>
             <asp:ObjectDataSource runat="server" ID="ReservationDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ReservationsByTime" TypeName="eRestaurant.Framework.BLL.SeatingController">
