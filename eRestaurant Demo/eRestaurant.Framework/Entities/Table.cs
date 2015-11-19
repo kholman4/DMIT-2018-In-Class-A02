@@ -20,6 +20,7 @@ namespace eRestaurant.Framework.Entities
 
         //Nav Prop
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
 
         //Sets default to Available
         public Table() 

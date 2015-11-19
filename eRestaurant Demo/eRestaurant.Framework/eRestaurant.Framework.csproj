@@ -73,6 +73,7 @@
     <Compile Include="Entities\DTO\MenuItemDTO.cs" />
     <Compile Include="Entities\DTO\ReservationCollection.cs" />
     <Compile Include="Entities\DTO\ReservationSummary.cs" />
+    <Compile Include="Entities\DTO\SeatingSummary.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\MenuCategory.cs" />
     <Compile Include="Entities\POCOs\ActiveEvent.cs" />

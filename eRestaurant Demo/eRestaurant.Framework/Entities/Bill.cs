@@ -21,7 +21,7 @@ namespace eRestaurant.Framework.Entities
         public DateTime OrderReady { get; set; }
         public string Comment { get; set; }
         public DateTime OrderServed { get; set; }
-        public DateTime OrderPaid { get; set; }
+        public TimeSpan? OrderPaid { get; set; }
 
         public Bill()
         {
@@ -32,5 +32,6 @@ namespace eRestaurant.Framework.Entities
         public virtual ICollection<BillItem> Items { get; set; } //A bill can have many bill items
         public virtual Waiter Waiter { get; set; }
         public virtual Table Table { get; set; }
+        public virtual Reservation Reservation { get; set; }
     }
 }
