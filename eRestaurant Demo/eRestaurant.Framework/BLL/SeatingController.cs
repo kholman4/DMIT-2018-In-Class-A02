@@ -33,7 +33,7 @@ namespace eRestaurant.Framework.BLL
                                           where walkin.BillDate.Year == date.Year
                                           && walkin.BillDate.Month == date.Month
                                           && walkin.BillDate.Day == date.Day
-                                          && (!walkin.OrderPlaced.HasValue || walkin.OrderPaid.Value >= time) //order paid is null OR order paid value is greater than current time
+                                          && (!walkin.OrderPaid.HasValue || walkin.OrderPaid.Value >= time) //order paid is null OR order paid value is greater than current time
                                           select walkin,
                                 
                                 //This subquery gets the bills for reservations

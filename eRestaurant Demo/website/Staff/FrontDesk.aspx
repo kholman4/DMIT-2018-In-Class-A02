@@ -49,7 +49,7 @@
         </details>--%>
 
     </div>       
-    
+
     <%-- Showing the reservations for a particular date --%> 
     <div class="pull-right col-md-5">
         <details open>
@@ -87,6 +87,29 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </details>
+    </div>
+
+    <div class="col-md-7">
+        <details open>
+            <summary>Tables</summary>
+            <asp:GridView runat="server" ID="SeatingGridView" AutoGenerateColumns="False" DataSourceID="SeatingObjectDataSource">
+                <Columns>
+                    <asp:BoundField DataField="Table" HeaderText="Table" SortExpression="Table"></asp:BoundField>
+                    <asp:BoundField DataField="Seating" HeaderText="Seating" SortExpression="Seating"></asp:BoundField>
+                    <asp:CheckBoxField DataField="Taken" HeaderText="Taken" SortExpression="Taken"></asp:CheckBoxField>
+                    <asp:BoundField DataField="BillID" HeaderText="BillID" SortExpression="BillID"></asp:BoundField>
+                    <asp:BoundField DataField="BillTotal" HeaderText="BillTotal" SortExpression="BillTotal"></asp:BoundField>
+                    <asp:BoundField DataField="Waiter" HeaderText="Waiter" SortExpression="Waiter"></asp:BoundField>
+                    <asp:BoundField DataField="ReservationName" HeaderText="ReservationName" SortExpression="ReservationName"></asp:BoundField>
+                </Columns>
+            </asp:GridView>
+        </details>
+        <asp:ObjectDataSource runat="server" ID="SeatingObjectDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="SeatingByDateTime" TypeName="eRestaurant.Framework.BLL.SeatingController">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="SearchDate" PropertyName="Text" Name="date" Type="DateTime"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="SearchTime" PropertyName="Text" DbType="Time" Name="time"></asp:ControlParameter>
+            </SelectParameters>
+        </asp:ObjectDataSource>
     </div>
 </asp:Content>
 
