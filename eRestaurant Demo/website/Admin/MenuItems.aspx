@@ -14,7 +14,7 @@
         ID="MenuDataSource"
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="ListMenuItems"
-        TypeNAme="eRestaurant.BLL.MenuController">
+        TypeName="eRestaurant.BLL.MenuController">
     </asp:ObjectDataSource>
 
     

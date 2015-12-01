@@ -16,6 +16,7 @@ namespace eRestaurant.Framework.Entities.DTO
         public string Waiter { get; set; } //Waiter's name
         public string ReservationName { get; set; } //Reservations.ContactName (nullable)
 
+        //We got the above information from the fields in step 3
         //Step 3
         //Table = data.Table,
         //        Capacity = data.Capacity,
