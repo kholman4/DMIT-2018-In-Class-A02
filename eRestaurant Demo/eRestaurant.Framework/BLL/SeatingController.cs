@@ -142,7 +142,29 @@ namespace eRestaurant.Framework.BLL
                                   };
                 return finalResult.ToList();
             }
-        } 
+        }
+
+        /// <summary>
+        /// ListWaiters returns the id and full name of all the current waiters
+        /// </summary>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<WaiterOnDuty> ListWaiters()
+        {
+            using (var context = new RestaurantContext())
+            {
+                var result = from person in context.Waiters
+                             where person.ReleaseDate == null
+                             select new WaiterOnDuty()
+                             {
+                                 WaiterId = person.WaiterID,
+                                 FullName = person.FirstName + " " + person.LastName
+                             };
+                return result.ToList();
+            }
+        }
+
+
         
     }
 }
