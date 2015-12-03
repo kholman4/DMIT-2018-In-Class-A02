@@ -25,7 +25,7 @@
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="MoveOver" runat="server" CommandName="Select" CssClass="btn btn-default"><span class="glyphicon glyphicon-forward">Move</span></asp:LinkButton>
+                        <asp:LinkButton ID="MoveOver" runat="server" CommandName="Select" CssClass="btn btn-default"><span class="glyphicon glyphicon-forward"> Move </span></asp:LinkButton>
                         <asp:Label ID="Quantity" runat="server" Text="<%# Item.Quantity %>"></asp:Label>
                         <asp:Label ID="ItemName" runat="server" Text="<%# Item.ItemName %>"></asp:Label>
                         <asp:Label ID="Price" runat="server" Text="<%# Item.Price %>"></asp:Label>
@@ -36,10 +36,20 @@
     </div>
     <div class="row col-md-6">
         <h2>New Bill</h2>
-        <asp:GridView ID="NewBillItems" runat="server" AutoGenerateColumns="false">
+        <asp:GridView ID="NewBillItems" runat="server" AutoGenerateColumns="false" ItemType="eRestaurant.Framework.Entities.POCOs.OrderItem" OnSelectedIndexChanging="BillItems_SelectedIndexChanging">
             <EmptyDataTemplate>
                 New bill is empty. Move an item from the original bill.
             </EmptyDataTemplate>
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="MoveOver" runat="server" CommandName="Select" CssClass="btn btn-default"><span class="glyphicon glyphicon-backward"> Move </span></asp:LinkButton>
+                        <asp:Label ID="Quantity" runat="server" Text="<%# Item.Quantity %>"></asp:Label>
+                        <asp:Label ID="ItemName" runat="server" Text="<%# Item.ItemName %>"></asp:Label>
+                        <asp:Label ID="Price" runat="server" Text="<%# Item.Price %>"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
         </asp:GridView>
     </div>
 

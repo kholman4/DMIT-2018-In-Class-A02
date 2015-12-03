@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using eRestaurant.Framework.Entities.POCOs;
 
 public partial class Staff_SplitBill : System.Web.UI.Page
 {
@@ -46,13 +47,69 @@ public partial class Staff_SplitBill : System.Web.UI.Page
             //<asp:Label ID="Quantity....
         var nameLabel = row.FindControl("ItemName") as Label;
         var priceLabel = row.FindControl("Price") as Label;
+        OrderItem itemToMove = new OrderItem()
+        {
+            ItemName = nameLabel.Text,
+            Quantity = int.Parse(qtyLabel.Text),
+            Price = decimal.Parse(priceLabel.Text)    
+            
+        };
 
                 //Temp Output
         MessageLabel.Text = "I want to move " + qtyLabel.Text + " " + nameLabel.Text + " items onto the other grid bill. $" + priceLabel.Text + "each";
 
         //2) move it to the other gridview
+        GridView targetGridView;
+        if (sender == OriginalBillItems)
+        {
+            targetGridView = NewBillItems;
+        }
+        else
+        {
+            targetGridView = OriginalBillItems;
+        }
+
+        List<OrderItem> targetItems = new List<OrderItem>();
+        foreach(GridViewRow targetRow in targetGridView.Rows)
+        {
+            qtyLabel = targetRow.FindControl("Quantity") as Label;
+            nameLabel = targetRow.FindControl("ItemName") as Label;
+            priceLabel = targetRow.FindControl("Price") as Label;
+
+            targetItems.Add(new OrderItem()
+            {
+                ItemName = nameLabel.Text,
+                Quantity = int.Parse(qtyLabel.Text),
+                Price = decimal.Parse(priceLabel.Text)
+            });
+        }
+        targetItems.Add(itemToMove);
+        targetGridView.DataSource = targetItems;
+        targetGridView.DataBind();
 
         //3) take the row out of this list
+        List<OrderItem> senderItems = new List<OrderItem>();
+        for(int index = 0; index < sendingGridView.Rows.Count; index++)
+        {            
+            if(index != e.NewSelectedIndex)
+            {
+                GridViewRow senderRow = sendingGridView.Rows[index];
+
+                qtyLabel = senderRow.FindControl("Quantity") as Label;
+                nameLabel = senderRow.FindControl("ItemName") as Label;
+                priceLabel = senderRow.FindControl("Price") as Label;
+
+                senderItems.Add(new OrderItem()
+                {
+                    ItemName = nameLabel.Text,
+                    Quantity = int.Parse(qtyLabel.Text),
+                    Price = decimal.Parse(priceLabel.Text)
+                });
+            }
+        }
+        sendingGridView.DataSource = senderItems;
+        sendingGridView.DataBind();
+
 
         //4) happy dance
 
