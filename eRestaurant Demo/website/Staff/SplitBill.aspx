@@ -11,12 +11,14 @@
         <asp:LinkButton ID="SelectBill" runat="server" CssClass="btn btn-primary" OnClick="SelectBill_Click">
             Select Bill
         </asp:LinkButton>
+        <asp:HiddenField ID="BillToSplit" runat="server" />
 
         <asp:ObjectDataSource runat="server" ID="ActiveBillsDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListUnpaidBills" TypeName="eRestaurant.Framework.BLL.WaiterController"></asp:ObjectDataSource>
         <asp:Label ID="MessageLabel" runat="server"></asp:Label>
     </div>
 
-    <div class="row col-md-6">
+    <div class="row">
+        <div class="row col-md-6">
         <h2>Original Bill</h2>
         <asp:GridView ID="OriginalBillItems" runat="server" 
             AutoGenerateColumns="false" 
@@ -34,7 +36,7 @@
             </Columns>
         </asp:GridView>
     </div>
-    <div class="row col-md-6">
+        <div class="row col-md-6">
         <h2>New Bill</h2>
         <asp:GridView ID="NewBillItems" runat="server" AutoGenerateColumns="false" ItemType="eRestaurant.Framework.Entities.POCOs.OrderItem" OnSelectedIndexChanging="BillItems_SelectedIndexChanging">
             <EmptyDataTemplate>
@@ -51,6 +53,13 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+    </div>
+    </div>
+
+    <div class="row col-md-12">
+        <asp:LinkButton ID="SplitBillCommit" runat="server" CssClass="btn btn-default" OnClick="SplitBill_Click">
+            Split Bill
+        </asp:LinkButton>
     </div>
 
 

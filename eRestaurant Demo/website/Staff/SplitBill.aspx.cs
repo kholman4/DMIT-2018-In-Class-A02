@@ -21,6 +21,7 @@ public partial class Staff_SplitBill : System.Web.UI.Page
     {
         var controller = new WaiterController();
         var data = controller.GetBill(int.Parse(ActiveBills.SelectedValue));
+        BillToSplit.Value = data.BillID.ToString();
         //BillToSplit.Value = data.BillID.ToString();
 
         //Set the original bill items
@@ -110,10 +111,49 @@ public partial class Staff_SplitBill : System.Web.UI.Page
         sendingGridView.DataSource = senderItems;
         sendingGridView.DataBind();
 
-
         //4) happy dance
 
-    }
 
+    }
+    protected void SplitBill_Click(object sender, EventArgs e)
+    {
+        //Get the original bill items
+        List<OrderItem> originalBillItems = new List<OrderItem>();
+        foreach(GridViewRow row in OriginalBillItems.Rows)
+        {
+            var qtyLabel = row.FindControl("Quantity") as Label;
+            var nameLabel = row.FindControl("ItemName") as Label;
+            var priceLabel = row.FindControl("Price") as Label;
+
+            originalBillItems.Add(new OrderItem()
+                {
+                    ItemName = nameLabel.Text,
+                    Quantity = int.Parse(qtyLabel.Text),
+                    Price = decimal.Parse(priceLabel.Text)
+                });
+        }
+
+        //Get the new bill items
+        List<OrderItem> newBillItems = new List<OrderItem>();
+        foreach (GridViewRow row in NewBillItems.Rows)
+        {
+            var qtyLabel = row.FindControl("Quantity") as Label;
+            var nameLabel = row.FindControl("ItemName") as Label;
+            var priceLabel = row.FindControl("Price") as Label;
+
+            newBillItems.Add(new OrderItem()
+            {
+                ItemName = nameLabel.Text,
+                Quantity = int.Parse(qtyLabel.Text),
+                Price = decimal.Parse(priceLabel.Text)
+            });
+        }
+                       
+        //Call the BLL to split the bill
+        int BillID = int.Parse(BillToSplit.Value);
+
+        WaiterController controller = new WaiterController();
+
+    }
 
 }
