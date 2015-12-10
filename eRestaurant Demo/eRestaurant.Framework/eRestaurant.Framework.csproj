@@ -69,6 +69,7 @@
     <Compile Include="DAL\RestaurantContext.cs" />
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillItem.cs" />
+    <Compile Include="Entities\BusinessRuleException.cs" />
     <Compile Include="Entities\DTO\CategoryDTO.cs" />
     <Compile Include="Entities\DTO\DailyReservation.cs" />
     <Compile Include="Entities\DTO\MenuItemDTO.cs" />
